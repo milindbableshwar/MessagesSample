@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F82EF</color>
+    <color name="colorPrimaryDark">#2B6DD9</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="grey_message_border">#EAEAEA</color>
+    <color name="user_name_text_color">#6E6E6E</color>
+    <color name="user_message_text_color">#4D4D4D</color>
+    <color name="white">#FFFFFF</color>
+</resources>

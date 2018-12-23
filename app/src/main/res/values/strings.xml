@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Messages</string>
+
+    <string name="message_deleted">Message deleted</string>
+    <string name="attachment_deleted">Attachment deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="user_avatar">User Avatar</string>
+    <string name="attachment_image">Attachment Image</string>
+    <string name="message_me">Me</string>
+    <string name="delete_attachment_question">Delete Attachment?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
