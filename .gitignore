@@ -42,3 +42,6 @@ captures/
 .idea/caches
 .idea/*
 
+# Mac OS specific
+.DS_Store
+
