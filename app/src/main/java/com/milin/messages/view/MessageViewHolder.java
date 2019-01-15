@@ -20,7 +20,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
     private TextView name;
     private ImageView avatar;
     private LinearLayout attachmentsContainer;
-    public CompleteMessage message;
     private AttachmentLongPressListener attachmentLongPressListener;
 
     MessageViewHolder(View itemView, AttachmentLongPressListener attachmentLongPressListener) {
@@ -33,7 +32,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindView(CompleteMessage completeMessage, int viewType) {
-        this.message = completeMessage;
         if(completeMessage != null) {
             content.setText(completeMessage.message.content);
             if(viewType % 2 == MessagesAdapter.VIEW_TYPE_THIS) {

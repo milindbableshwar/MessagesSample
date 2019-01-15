@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MessagesActivity extends AppCompatActivity {
 
     private RecyclerView messageRecyclerView;
-
+    private MessagesAdapter messagesAdapter;
     private MessagesViewModel viewModel;
 
     @Override
@@ -30,10 +30,10 @@ public class MessagesActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(MessagesActivity.this).get(MessagesViewModel.class);
 
-        MessagesAdapter adapter = new MessagesAdapter(MessageWithUserDiffCallback, attachmentLongPressListener);
-        adapter.setHasStableIds(true);
-        messageRecyclerView.setAdapter(adapter);
-        viewModel.getPagedMessagesList().observe(MessagesActivity.this, adapter::submitList);
+        messagesAdapter = new MessagesAdapter(MessageWithUserDiffCallback, attachmentLongPressListener);
+        messagesAdapter.setHasStableIds(true);
+        messageRecyclerView.setAdapter(messagesAdapter);
+        viewModel.getPagedMessagesList().observe(MessagesActivity.this, messagesAdapter::submitList);
         addSwipeToDeleteListener();
     }
 
@@ -52,8 +52,8 @@ public class MessagesActivity extends AppCompatActivity {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 if(viewHolder instanceof MessageViewHolder) {
-                    final CompleteMessage completeMessage = ((MessageViewHolder)viewHolder).message;
-                    viewModel.removeMessage(((MessageViewHolder)viewHolder).message);
+                    final CompleteMessage completeMessage = messagesAdapter.getMessageItem(viewHolder.getAdapterPosition());
+                    viewModel.removeMessage(completeMessage);
                     Snackbar.make(messageRecyclerView, R.string.message_deleted, Snackbar.LENGTH_LONG)
                             .setAction(R.string.undo, view -> viewModel.addMessage(completeMessage))
                             .show();

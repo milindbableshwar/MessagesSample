@@ -45,6 +45,10 @@ public class MessagesAdapter extends PagedListAdapter<CompleteMessage, MessageVi
         holder.bindView(getItem(position), getItemViewType(position));
     }
 
+    public CompleteMessage getMessageItem(int position) {
+        return getItem(position);
+    }
+
     @Override
     public int getItemViewType(int position) {
         CompleteMessage completeMessage = getItem(position);
