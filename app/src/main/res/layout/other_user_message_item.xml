@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_marginEnd="56dp"
+    android:layout_marginEnd="@dimen/message_card_end_padding"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp">
+    android:layout_marginTop="@dimen/spacing_small"
+    android:layout_marginBottom="@dimen/spacing_small">
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="@dimen/circular_avatar_dimen"
+        android:layout_height="@dimen/circular_avatar_dimen"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
         android:contentDescription="@string/user_avatar"/>
 
     <LinearLayout
@@ -23,21 +23,23 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_other_user_message"
             android:orientation="vertical"
-            android:padding="8dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp">
+            android:padding="@dimen/spacing_medium"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small">
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="@dimen/message_body_text_size"
                 android:textColor="@color/user_name_text_color"/>
 
             <TextView
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:textSize="@dimen/message_body_text_size"
                 android:textColor="@color/user_message_text_color"/>
         </LinearLayout>
         <LinearLayout
