@@ -28,7 +28,22 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         name = itemView.findViewById(R.id.userName);
         avatar = itemView.findViewById(R.id.avatar);
         attachmentsContainer = itemView.findViewById(R.id.attachmentContainer);
+        int attachmentsCount = attachmentsContainer.getChildCount();
+        View.OnLongClickListener attachmentLongClickListener = getAttachmentLongClickListener();
+        for (int i = 0; i < attachmentsCount; i++) {
+            attachmentsContainer.getChildAt(i).setOnLongClickListener(attachmentLongClickListener);
+        }
         this.attachmentLongPressListener = attachmentLongPressListener;
+    }
+
+    private View.OnLongClickListener getAttachmentLongClickListener() {
+        return view -> {
+            if (view.getTag() != null && view.getTag() instanceof Attachment) {
+                attachmentLongPressListener.onAttachmentLongClicked((Attachment) view.getTag());
+                return true;
+            }
+            return false;
+        };
     }
 
     public void bindView(CompleteMessage completeMessage, int viewType) {
@@ -52,10 +67,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
                     Picasso.get().load(attachment.thumbnailUrl)
                             .into((ImageView) attachmentCard.findViewById(R.id.attachmentImage));
                     ((TextView) attachmentCard.findViewById(R.id.attachmentText)).setText(attachment.title);
-                    attachmentCard.setOnLongClickListener(view -> {
-                        attachmentLongPressListener.onAttachmentLongClicked(attachment);
-                        return true;
-                    });
+                    attachmentCard.setTag(attachment);
                 }
             }
         }
